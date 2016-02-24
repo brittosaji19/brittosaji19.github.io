@@ -10,6 +10,11 @@
 	</head>
 	<body>
 		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="day" align="center"></div>
+				</div>
+			</div>
 			<div class="row" align="center">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 					<div class="clock" align="center"></div>
@@ -19,16 +24,22 @@
 		
 		<script type="text/javascript">
 			var clock;
+			//var day;
 			$(document).ready(function() {
 				var currentDate=new Date();
 				var launchDate=new Date(2016,1,29,7,0,0);
 				var diff = launchDate.getTime() / 1000 - currentDate.getTime() / 1000;
 				// Instantiate a counter
-				clock = new FlipClock($('.clock'),diff, {
+				clock = new FlipClock($('.clock'),diff%(3600*24), {
 					clockFace: 'dailyCounter',
 					autoStart: true,
 					countdown: true
 				});
+				// day = new FlipClock($('.day'),diff%(3600*24), {
+				// 	clockFace: 'hourlyCounter',
+				// 	autoStart: true,
+				// 	countdown: true
+				// });
 				
 			});
 		</script>
@@ -53,8 +64,10 @@
 		    background: #000;
 }
 		.clock{
-		   zoom: 0.5;
-		   -moz-transform: scale(0.5)
+		   zoom: 0.6;
+		   -moz-transform: scale(0.6);
+		   -webkit-transform:scale(0.6);
+
 		}
 		.flip-clock-divider .flip-clock-label {
 		    position: absolute;
@@ -62,7 +75,7 @@
 		    right: -86px;
 		    color: black;
 		    text-shadow: none;
-		    font-size: 1.8em;
+		    font-size: 1.9em;
 		    text-align: center;
 		}
 		</style>
